@@ -31,7 +31,7 @@ namespace Project.DataAccess.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(ConnectionStrings.MyConnectionString);
+                optionsBuilder.UseSqlServer(ConnectionStrings.NewMyConnectionString);
             }
         }
 
