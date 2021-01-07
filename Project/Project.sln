@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.DataAccess.Tests", "Project.DataAccess.Tests\Project.DataAccess.Tests.csproj", "{67E13F06-2A93-4C6B-8F98-3432B7BFFFAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.DataAccess", "Project.DataAccess\Project.DataAccess.csproj", "{9EAE43BF-E7ED-4062-9060-C8D6B520354C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67E13F06-2A93-4C6B-8F98-3432B7BFFFAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67E13F06-2A93-4C6B-8F98-3432B7BFFFAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67E13F06-2A93-4C6B-8F98-3432B7BFFFAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67E13F06-2A93-4C6B-8F98-3432B7BFFFAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EAE43BF-E7ED-4062-9060-C8D6B520354C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EAE43BF-E7ED-4062-9060-C8D6B520354C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EAE43BF-E7ED-4062-9060-C8D6B520354C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EAE43BF-E7ED-4062-9060-C8D6B520354C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
