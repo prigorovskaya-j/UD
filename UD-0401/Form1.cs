@@ -13,7 +13,6 @@ namespace UD_0401
 {
     public partial class Form1 : Form
     {
-
         SqlConnection sqlConnection;
         SqlCommandBuilder sqlBuilder = null;
         SqlDataAdapter sqlDataAdapter = null;
@@ -22,14 +21,13 @@ namespace UD_0401
         public Form1()
         {
             InitializeComponent();
-           
+
             tabPage2.AutoScroll = true;
             tabPage3.AutoScroll = true;
             tabPage4.AutoScroll = true;
             tabPage5.AutoScroll = true;
             tabPage6.AutoScroll = true;
-             
-    }
+        }
 
         /*private void LoadData() {
             try {
@@ -42,12 +40,14 @@ namespace UD_0401
             }
         }
        */
-    
+
         private async void Form1_Load(object sender, EventArgs e)
         {
-            sqlConnection = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\prigo\source\repos\UD-0401\UD-0401\DatabaseUD.mdf; Integrated Security = True; Connect Timeout = 30");
+            sqlConnection =
+                new SqlConnection(
+                    @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\razumovskiy\RiderProjects\UD\UD-0401\DatabaseUD.mdf; Integrated Security = True; Connect Timeout = 30");
             await sqlConnection.OpenAsync();
-          
+
 
             //LoadData();
 
@@ -69,22 +69,23 @@ namespace UD_0401
             this.inventarisationTableAdapter.Fill(this.databaseUDDataSet.Inventarisation);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "databaseUDDataSet.Auditoriya". При необходимости она может быть перемещена или удалена.
             this.auditoriyaTableAdapter.Fill(this.databaseUDDataSet.Auditoriya);
-
         }
 
-  
-        private async void button1_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
-   
-           MessageBox.Show("save new auditories");
-           SqlCommand command = new SqlCommand("INSERT into [Auditoriya]('[№ аудитории]','[тип аудитории]','[id ответственного]')values([№ аудитории],[тип аудитории],[id ответственного])", sqlConnection);
-           command.Parameters.AddWithValue("[№ аудитории]",num_аудиторииTextBox.Text);
-           command.Parameters.AddWithValue("[тип аудитории]", тип_аудиторииTextBox.Text);
-           command.Parameters.AddWithValue("[id ответственного]", id_ответственногоComboBox.Text);
-           
+            MessageBox.Show("save new auditories");
+            SqlCommand command =
+                new SqlCommand(
+                    "INSERT into [Auditoriya]('[№ аудитории]','[тип аудитории]','[id ответственного]')values([№ аудитории],[тип аудитории],[id ответственного])",
+                    sqlConnection);
+            command.Parameters.AddWithValue("[№ аудитории]", num_аудиторииTextBox.Text);
+            command.Parameters.AddWithValue("[тип аудитории]", тип_аудиторииTextBox.Text);
+            command.Parameters.AddWithValue("[id ответственного]", id_ответственногоComboBox.Text);
+            command.ExecuteNonQuery();
             this.auditoriyaBindingSource.EndEdit();
-       
         }
+
         private void EndEditOnAllBindingSources()
         {
             var BindingSourcesQuery =
@@ -101,7 +102,7 @@ namespace UD_0401
         private void сохранитьToolStripButton_Click(object sender, EventArgs e)
         {
             EndEditOnAllBindingSources();
-            
+
             this.inventarTableAdapter.Update(this.databaseUDDataSet.Inventar);
             this.auditoriyaTableAdapter.Update(this.databaseUDDataSet.Auditoriya);
             this.documentTableAdapter.Update(this.databaseUDDataSet.Document);
@@ -119,8 +120,6 @@ namespace UD_0401
             this.inventarisationBindingSource.EndEdit();
             this.remontBindingSource.EndEdit();
             this.spisokBindingSource.EndEdit();
-
-           
         }
     }
 }
