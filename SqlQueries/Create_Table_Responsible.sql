@@ -1,6 +1,6 @@
 CREATE TABLE [dbo].[Responsible] (
-[Responsible_id] INT NOT NULL,
-[Full_name] CHAR (30) NOT NULL,
+[ResponsibleID] INT NOT NULL,
+[ResponsibleName] CHAR (30) NOT NULL,
 [Password] CHAR (10) NOT NULL,
-PRIMARY KEY CLUSTERED ([Responsible_id] ASC)
+PRIMARY KEY CLUSTERED ([ResponsibleID] ASC)
 );

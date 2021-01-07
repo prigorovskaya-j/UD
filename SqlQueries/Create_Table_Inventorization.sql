@@ -1,8 +1,8 @@
 CREATE TABLE [dbo].[Inventarization] (
-[Check_number] INT NOT NULL,
-[Date] DATE NOT NULL,
-[Checker_id] INT NOT NULL,
-PRIMARY KEY CLUSTERED ([Check_number] ASC),
-FOREIGN KEY ([Checker_id]) REFERENCES [dbo].[Check] ([Checker_id])
+[InventarizationID] INT NOT NULL,
+[InventarizationDate] DATE NOT NULL,
+[VerifierID] INT NOT NULL,
+PRIMARY KEY CLUSTERED ([InventarizationID] ASC),
+FOREIGN KEY ([VerifierID]) REFERENCES [dbo].[Verifier] ([VerifierID])
 ON DELETE CASCADE ON UPDATE CASCADE
 );
