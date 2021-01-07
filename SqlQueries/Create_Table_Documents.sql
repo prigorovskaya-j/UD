@@ -1,5 +1,5 @@
-CREATE TABLE [dbo].[Document] (
-[DocumentID] INT NOT NULL,
+CREATE TABLE [dbo].[Documents] (
+[DocumentID] INT NOT NULL IDENTITY(1,1),
 [InventoryName] CHAR (10) NOT NULL,
 [DurationOfUse] INT NOT NULL,
 [DateUsedFrom] DATE NOT NULL,

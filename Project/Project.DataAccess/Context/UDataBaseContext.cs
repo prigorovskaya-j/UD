@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Project.DataAccess.Connection;
 using Project.DataAccess.Models;
 
 #nullable disable
@@ -29,7 +30,7 @@ namespace Project.DataAccess.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-P87PH2B;Initial Catalog=UDataBase;Integrated Security=true;");
+                optionsBuilder.UseSqlServer(ConnectionStrings.MyConnectionString);
             }
         }
 
