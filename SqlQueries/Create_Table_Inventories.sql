@@ -1,6 +1,6 @@
 CREATE TABLE [dbo].[Inventories] (
 [InventoryID] INT NOT NULL IDENTITY(1,1),
-[AuditoriumID] CHAR (10) NOT NULL,
+[AuditoriumID] INT NOT NULL,
 [DocumentID] INT NOT NULL,
 [CurrentState] CHAR (10) NOT NULL,
 [Availability] TINYINT NOT NULL,

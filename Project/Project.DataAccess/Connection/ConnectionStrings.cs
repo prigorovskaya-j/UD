@@ -3,6 +3,6 @@
     public static class ConnectionStrings
     {
         public const string MyConnectionString =
-            "Data Source=DESKTOP-P87PH2B;Initial Catalog=UDataBase;Integrated Security=true;";
+            "Data Source=DESKTOP-P87PH2B;Initial Catalog=ProjectDataBase;Integrated Security=true;";
     }
 }

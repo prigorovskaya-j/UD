@@ -1,5 +1,5 @@
 CREATE TABLE [dbo].[Auditories] (
-[AuditoriumID] CHAR (10) NOT NULL IDENTITY(1,1),
+[AuditoriumID] INT NOT NULL IDENTITY(1,1),
 [ResponsibleID] INT NOT NULL,
 [AuditoryType] TEXT NOT NULL,
 PRIMARY KEY CLUSTERED ([AuditoriumID] ASC),
