@@ -97,6 +97,7 @@ namespace Project.Console
                 case 2:
                     System.Console.WriteLine("Просмотр таблицы\n");
                     EnterTable();
+                   
                     break;
                 case 3:
                     System.Console.WriteLine("Добавить данные в таблицу\n");
@@ -248,145 +249,148 @@ namespace Project.Console
             var remont = context.Repairs.FirstOrDefault();
             var otvet = context.Responsibles.FirstOrDefault();
             var prover = context.Verifiers.FirstOrDefault();
-
-            WorkBd();
-            if (_enterMenu == 2)
+            while (true)
             {
-                //просмотр таблиц
-                switch (_x)
+                WorkBd();
+
+                if (_enterMenu == 2)
                 {
-                    case 1:
-                        System.Console.WriteLine("Таблица Аудитории: ");
-                        System.Console.WriteLine("№ аудитории|id ответственного|тип аудитории\n");
-                        System.Console.WriteLine(auditoriya.AuditoriumId + "     |" + auditoriya.ResponsibleId +
-                                                 "           |" + auditoriya.AuditoryType + "\n");
-                        break;
-                    case 2:
-                        System.Console.WriteLine("Таблица Сопроводительный документ: ");
-                        System.Console.WriteLine(
-                            "№ документа|название|срок эксплуатации|дата ввода|дата вывода|причина\n");
-                        System.Console.WriteLine(document.DocumentId + "     |" + document.InventoryName + "|" +
-                                                 document.DurationOfUse + "|" + document.DateUsedFrom + "|" +
-                                                 document.DateUsedTo + "|" + document.Reason + "\n");
-                        break;
-                    case 3:
+                    //просмотр таблиц
+                    switch (_x)
+                    {
+                        case 1:
+                            System.Console.WriteLine("Таблица Аудитории: ");
+                            System.Console.WriteLine("№ аудитории|id ответственного|тип аудитории\n");
+                            System.Console.WriteLine(auditoriya.AuditoriumId + "     |" + auditoriya.ResponsibleId + "           |" + auditoriya.AuditoryType + "\n");
 
-                        break;
-                    case 4:
+                            break;
+                        case 2:
+                            System.Console.WriteLine("Таблица Сопроводительный документ: ");
+                            System.Console.WriteLine("№ документа|название|срок эксплуатации|дата ввода|дата вывода|причина\n");
+                            System.Console.WriteLine(document.DocumentId + "     |" + document.InventoryName + "|" + document.DurationOfUse + "|" + document.DateUsedFrom + "|" + document.DateUsedTo + "|" + document.Reason + "\n");
+                            break;
+                        case 3:
 
-                        break;
-                    case 5:
+                            break;
+                        case 4:
 
-                        break;
-                    case 6:
+                            break;
+                        case 5:
 
-                        break;
-                    case 7:
+                            break;
+                        case 6:
 
-                        break;
-                    case 8:
+                            break;
+                        case 7:
 
-                        break;
-                    default:
-                        System.Console.WriteLine("Введено неверное значение");
-                        break;
+                            break;
+                        case 8:
+
+                            break;
+                        default:
+                            System.Console.WriteLine("Введено неверное значение");
+                            break;
+                    }
+
                 }
-            }
-            else if (_enterMenu == 3)
-            {
-                //Добавить данные в таблицу
-                switch (_x)
+                else if (_enterMenu == 3)
                 {
-                    case 1:
-                        break;
-                    case 2:
-                        Add_Document();
-                        break;
-                    case 3:
+                    //Добавить данные в таблицу
+                    switch (_x)
+                    {
+                        case 1:
+                            break;
+                        case 2:
+                            Add_Document();
 
-                        break;
-                    case 4:
+                            break;
+                        case 3:
 
-                        break;
-                    case 5:
+                            break;
+                        case 4:
 
-                        break;
-                    case 6:
+                            break;
+                        case 5:
 
-                        break;
-                    case 7:
+                            break;
+                        case 6:
 
-                        break;
-                    case 8:
+                            break;
+                        case 7:
 
-                        break;
-                    default:
-                        System.Console.WriteLine("Введено неверное значение");
-                        break;
+                            break;
+                        case 8:
+
+                            break;
+                        default:
+                            System.Console.WriteLine("Введено неверное значение");
+                            break;
+                    }
+                    WorkBd();
                 }
-            }
-            else if (_enterMenu == 4)
-            {
-                //Изменить данные в таблице
-                switch (_x)
+                else if (_enterMenu == 4)
                 {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
+                    //Изменить данные в таблице
+                    switch (_x)
+                    {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
 
-                        break;
-                    case 4:
+                            break;
+                        case 4:
 
-                        break;
-                    case 5:
+                            break;
+                        case 5:
 
-                        break;
-                    case 6:
+                            break;
+                        case 6:
 
-                        break;
-                    case 7:
+                            break;
+                        case 7:
 
-                        break;
-                    case 8:
+                            break;
+                        case 8:
 
-                        break;
-                    default:
-                        System.Console.WriteLine("Введено неверное значение");
-                        break;
+                            break;
+                        default:
+                            System.Console.WriteLine("Введено неверное значение");
+                            break;
+                    }
                 }
-            }
-            else if (_enterMenu == 5)
-            {
-                //Удалить данные из таблицы
-                switch (_x)
+                else if (_enterMenu == 5)
                 {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
+                    //Удалить данные из таблицы
+                    switch (_x)
+                    {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
 
-                        break;
-                    case 4:
+                            break;
+                        case 4:
 
-                        break;
-                    case 5:
+                            break;
+                        case 5:
 
-                        break;
-                    case 6:
+                            break;
+                        case 6:
 
-                        break;
-                    case 7:
+                            break;
+                        case 7:
 
-                        break;
-                    case 8:
+                            break;
+                        case 8:
 
-                        break;
-                    default:
-                        System.Console.WriteLine("Введено неверное значение");
-                        break;
+                            break;
+                        default:
+                            System.Console.WriteLine("Введено неверное значение");
+                            break;
+                    }
                 }
             }
         }
