@@ -5,13 +5,14 @@ using System.Linq;
 
 namespace Project.Console
 {
-    class Program
+    public static class Program
     {
-        static int entTab;
-        static int st;
-        static int x;
-        static int enterMenu;
-        static void showTable()
+        private static int _entTab;
+        private static int _st;
+        private static int _x;
+        private static int _enterMenu;
+
+        private static void ShowTable()
         {
             System.Console.WriteLine("В базе данных присутствует 8 таблиц: \n");
             System.Console.WriteLine("1 - Аудитория\n");
@@ -23,10 +24,14 @@ namespace Project.Console
             System.Console.WriteLine("7 - Инвентаризация\n");
             System.Console.WriteLine("8 - Список инвентаризации\n");
             System.Console.WriteLine("Введите 0, чтобы вернуться\n");
-            st = Convert.ToInt32(System.Console.ReadLine());
-            if (st == 0) { workBD(); }
+            _st = Convert.ToInt32(System.Console.ReadLine());
+            if (_st == 0)
+            {
+                WorkBd();
+            }
         }
-        static void enterTable()
+
+        private static void EnterTable()
         {
             System.Console.WriteLine("Выберите таблицу:\n");
             System.Console.WriteLine("1 - Аудитория\n");
@@ -38,41 +43,41 @@ namespace Project.Console
             System.Console.WriteLine("7 - Инвентаризация\n");
             System.Console.WriteLine("8 - Список инвентаризации\n");
             System.Console.WriteLine("0 - Главное меню\n");
-            entTab = Convert.ToInt32(System.Console.ReadLine());
-            switch (entTab)
+            _entTab = Convert.ToInt32(System.Console.ReadLine());
+            switch (_entTab)
             {
                 case 1:
-                    x = 1;
+                    _x = 1;
                     break;
                 case 2:
-                    x = 2;
+                    _x = 2;
                     break;
                 case 3:
-                    x = 3;
+                    _x = 3;
                     break;
                 case 4:
-                    x = 4;
+                    _x = 4;
                     break;
                 case 5:
-                    x = 5;
+                    _x = 5;
                     break;
                 case 6:
-                    x = 6;
+                    _x = 6;
                     break;
                 case 7:
-                    x = 7;
+                    _x = 7;
                     break;
                 case 8:
-                    x = 8;
+                    _x = 8;
                     break;
                 case 0:
-                    workBD();
+                    WorkBd();
                     break;
             }
         }
-        static void workBD()
-        {
 
+        private static void WorkBd()
+        {
             System.Console.WriteLine("Добро пожаловать в аудиторный фонд!\n");
             System.Console.WriteLine("Для дальнейшей работы выберите:\n");
             System.Console.WriteLine("1 - Просмотр списка таблиц\n");
@@ -81,52 +86,46 @@ namespace Project.Console
             System.Console.WriteLine("4 - Изменить данные в таблице\n");
             System.Console.WriteLine("5 - Удалить данные из таблицы\n");
             System.Console.WriteLine("0 - Выход\n");
-            enterMenu = Convert.ToInt32(System.Console.ReadLine());
+            _enterMenu = Convert.ToInt32(System.Console.ReadLine());
 
-            switch (enterMenu)
+            switch (_enterMenu)
             {
                 case 1:
                     System.Console.WriteLine("Список таблиц\n");
-                    showTable();
+                    ShowTable();
                     break;
                 case 2:
                     System.Console.WriteLine("Просмотр таблицы\n");
-                    enterTable();
+                    EnterTable();
                     break;
                 case 3:
                     System.Console.WriteLine("Добавить данные в таблицу\n");
-                    enterTable();
+                    EnterTable();
                     break;
                 case 4:
                     System.Console.WriteLine("Изменить данные в таблице\n");
-                    enterTable();
+                    EnterTable();
                     break;
                 case 5:
                     System.Console.WriteLine("Удалить данные из таблицы\n");
-                    enterTable();
+                    EnterTable();
                     break;
                 case 0:
                     Environment.Exit(0);
                     break;
             }
         }
-        public void Add_Document()
+
+        private static void Add_Document()
         {
-            string IN;
-            int DU;
-            DateTime DF;
-            DateTime DT;
-            string R;
             System.Console.WriteLine("Введите название инвентаря");
-            IN = System.Console.ReadLine();
+            var IN = System.Console.ReadLine();
             System.Console.WriteLine("Введиите срок экспулуатации");
-            DU = Convert.ToInt32(System.Console.ReadLine());
+            var DU = Convert.ToInt32(System.Console.ReadLine());
             System.Console.WriteLine("Введиите дату ввода");
-            DF = DateTime.Parse(System.Console.ReadLine());
-            System.Console.WriteLine("Введиите дату вывода");
-            DT = DateTime.Parse(System.Console.ReadLine());
+            var DF = DateTime.Now;
             System.Console.WriteLine("Введиите причину");
-            R = System.Console.ReadLine();
+            var R = System.Console.ReadLine();
 
             var context = new ProjectDataBaseContext();
             var toAdd = new Document
@@ -134,13 +133,13 @@ namespace Project.Console
                 InventoryName = IN,
                 DurationOfUse = DU,
                 DateUsedFrom = DF,
-                DateUsedTo=DT,
                 Reason = R
             };
             context.Documents.Add(toAdd);
             context.SaveChanges();
         }
-        public void Add_Auditories()
+
+        public static void Add_Auditories()
         {
             var context = new ProjectDataBaseContext();
             var toAdd = new Document
@@ -153,7 +152,8 @@ namespace Project.Console
             context.Documents.Add(toAdd);
             context.SaveChanges();
         }
-        public void Add_Inventar()
+
+        public static void Add_Inventar()
         {
             var context = new ProjectDataBaseContext();
             var toAdd = new Document
@@ -166,7 +166,8 @@ namespace Project.Console
             context.Documents.Add(toAdd);
             context.SaveChanges();
         }
-        public void Add_Inventarization()
+
+        public static void Add_Inventarization()
         {
             var context = new ProjectDataBaseContext();
             var toAdd = new Document
@@ -179,7 +180,8 @@ namespace Project.Console
             context.Documents.Add(toAdd);
             context.SaveChanges();
         }
-        public void Add_List()
+
+        public static void Add_List()
         {
             var context = new ProjectDataBaseContext();
             var toAdd = new Document
@@ -192,7 +194,8 @@ namespace Project.Console
             context.Documents.Add(toAdd);
             context.SaveChanges();
         }
-        public void Add_Otvet()
+
+        public static void Add_Otvet()
         {
             var context = new ProjectDataBaseContext();
             var toAdd = new Document
@@ -205,7 +208,8 @@ namespace Project.Console
             context.Documents.Add(toAdd);
             context.SaveChanges();
         }
-        public void Add_Remont()
+
+        public static void Add_Remont()
         {
             var context = new ProjectDataBaseContext();
             var toAdd = new Document
@@ -218,7 +222,8 @@ namespace Project.Console
             context.Documents.Add(toAdd);
             context.SaveChanges();
         }
-        public void Add_Prover()
+
+        public static void Add_Prover()
         {
             var context = new ProjectDataBaseContext();
             var toAdd = new Document
@@ -231,7 +236,8 @@ namespace Project.Console
             context.Documents.Add(toAdd);
             context.SaveChanges();
         }
-        static void Main(string[] args)
+
+        private static void Main()
         {
             var context = new ProjectDataBaseContext();
             var document = context.Documents.FirstOrDefault();
@@ -243,20 +249,25 @@ namespace Project.Console
             var otvet = context.Responsibles.FirstOrDefault();
             var prover = context.Verifiers.FirstOrDefault();
 
-            workBD();
-            if (enterMenu == 2)
-            {   //просмотр таблиц
-                switch (x)
+            WorkBd();
+            if (_enterMenu == 2)
+            {
+                //просмотр таблиц
+                switch (_x)
                 {
                     case 1:
                         System.Console.WriteLine("Таблица Аудитории: ");
                         System.Console.WriteLine("№ аудитории|id ответственного|тип аудитории\n");
-                        System.Console.WriteLine(auditoriya.AuditoriumId + "     |" + auditoriya.ResponsibleId + "           |" + auditoriya.AuditoryType + "\n");
+                        System.Console.WriteLine(auditoriya.AuditoriumId + "     |" + auditoriya.ResponsibleId +
+                                                 "           |" + auditoriya.AuditoryType + "\n");
                         break;
                     case 2:
                         System.Console.WriteLine("Таблица Сопроводительный документ: ");
-                        System.Console.WriteLine("№ документа|название|срок эксплуатации|дата ввода|дата вывода|причина\n");
-                        System.Console.WriteLine(document.DocumentId + "     |" + document.InventoryName + "|" + document.DurationOfUse + "|" + document.DateUsedFrom + "|" + document.DateUsedTo + "|" + document.Reason + "\n");
+                        System.Console.WriteLine(
+                            "№ документа|название|срок эксплуатации|дата ввода|дата вывода|причина\n");
+                        System.Console.WriteLine(document.DocumentId + "     |" + document.InventoryName + "|" +
+                                                 document.DurationOfUse + "|" + document.DateUsedFrom + "|" +
+                                                 document.DateUsedTo + "|" + document.Reason + "\n");
                         break;
                     case 3:
 
@@ -279,13 +290,12 @@ namespace Project.Console
                     default:
                         System.Console.WriteLine("Введено неверное значение");
                         break;
-
                 }
             }
-            else if (enterMenu == 3)
+            else if (_enterMenu == 3)
             {
                 //Добавить данные в таблицу
-                switch (x)
+                switch (_x)
                 {
                     case 1:
                         break;
@@ -313,13 +323,12 @@ namespace Project.Console
                     default:
                         System.Console.WriteLine("Введено неверное значение");
                         break;
-
                 }
             }
-            else if (enterMenu == 4)
+            else if (_enterMenu == 4)
             {
                 //Изменить данные в таблице
-                switch (x)
+                switch (_x)
                 {
                     case 1:
                         break;
@@ -346,13 +355,12 @@ namespace Project.Console
                     default:
                         System.Console.WriteLine("Введено неверное значение");
                         break;
-
                 }
             }
-            else if (enterMenu == 5)
+            else if (_enterMenu == 5)
             {
                 //Удалить данные из таблицы
-                switch (x)
+                switch (_x)
                 {
                     case 1:
                         break;
@@ -379,7 +387,6 @@ namespace Project.Console
                     default:
                         System.Console.WriteLine("Введено неверное значение");
                         break;
-
                 }
             }
         }
