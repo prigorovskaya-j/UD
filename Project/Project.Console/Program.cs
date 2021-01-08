@@ -270,7 +270,7 @@ namespace Project.Console
         }
 
         public static void changeDocument() {
-           /* System.Console.WriteLine("Введите название инвентаря");
+            System.Console.WriteLine("Введите название инвентаря");
             var IN = System.Console.ReadLine();
             System.Console.WriteLine("Введиите срок экспулуатации");
             var DU = Convert.ToInt32(System.Console.ReadLine());
@@ -278,16 +278,16 @@ namespace Project.Console
             var DF = DateTime.Now;
             System.Console.WriteLine("Введиите причину");
             var R = System.Console.ReadLine();
+            
             var context = new ProjectDataBaseContext();
-            var toChange = context.Documents.First(x => x.DocumentId == _enterChange)
-             {
-                InventoryName = IN,
-                DurationOfUse = DU,
-                DateUsedFrom = DateTime.Now,
-                Reason = R
-            };
+            var document = context.Documents.Where(x => x.DocumentId == _enterChange).FirstOrDefault();
 
-            context.SaveChanges();*/
+            document.InventoryName = IN;
+            document.DurationOfUse = DU;
+            document.DateUsedFrom = DateTime.Now;
+            document.Reason = R;
+            
+           context.SaveChanges();
         }
         public static void deleteDocument() {
             var context = new ProjectDataBaseContext();
