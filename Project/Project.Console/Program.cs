@@ -289,6 +289,126 @@ namespace Project.Console
             
            context.SaveChanges();
         }
+        public static void changeAuditory()
+        {
+            System.Console.WriteLine("Введите id ответственного");
+            var RI = Convert.ToInt32(System.Console.ReadLine());
+            System.Console.WriteLine("Введиите тип аудитории");
+            var AT = System.Console.ReadLine();
+           
+            var context = new ProjectDataBaseContext();
+            var auditory = context.Auditories.Where(x => x.AuditoriumId == _enterChange).FirstOrDefault();
+
+            auditory.ResponsibleId = RI;
+            auditory.AuditoryType = AT;
+            
+            context.SaveChanges();
+        }
+        public static void changeInventory()
+        {
+            System.Console.WriteLine("Введите id аудитории");
+            var AI = Convert.ToInt32(System.Console.ReadLine());
+            System.Console.WriteLine("Введиите id документа");
+            var DI = Convert.ToInt32(System.Console.ReadLine());
+            System.Console.WriteLine("Введиите состояние");
+            var CS = System.Console.ReadLine();
+            System.Console.WriteLine("Введиите наличие");
+            var Av = Convert.ToByte(System.Console.ReadLine());
+
+            var context = new ProjectDataBaseContext();
+            var inventory = context.Inventories.Where(x => x.InventoryId == _enterChange).FirstOrDefault();
+
+            inventory.AuditoriumId = AI;
+            inventory.DocumentId = DI;
+            inventory.CurrentState = CS;
+            inventory.Availability = Av;
+
+            context.SaveChanges();
+        }
+        public static void changeInventarization()
+        {
+            System.Console.WriteLine("Введиите дату");
+            var ID = DateTime.Now;
+            System.Console.WriteLine("Введиите причину");
+            var VI = Convert.ToInt32(System.Console.ReadLine());
+
+            var context = new ProjectDataBaseContext();
+            var inventarization = context.Inventarizations.Where(x => x.InventarizationId == _enterChange).FirstOrDefault();
+
+            inventarization.InventarizationDate = ID;
+            inventarization.VerifierId = VI;
+            
+            context.SaveChanges();
+        }
+        public static void changeList()
+        {
+            System.Console.WriteLine("Введите id аудитории");
+            var AI = Convert.ToInt32(System.Console.ReadLine());
+            System.Console.WriteLine("Введиите id инвентаризации");
+            var II = Convert.ToInt32(System.Console.ReadLine());
+           
+            var context = new ProjectDataBaseContext();
+            var list = context.Lists.Where(x => x.ListId == _enterChange).FirstOrDefault();
+
+            list.AuditoriumId = AI;
+            list.InventarizationId = II;
+            
+            context.SaveChanges();
+        }
+        public static void changeRemont()
+        {
+            System.Console.WriteLine("Введите id инвентаря");
+            var II = Convert.ToInt32(System.Console.ReadLine());
+            System.Console.WriteLine("Введиите дату ремонта");
+            var DS = DateTime.Now;
+            System.Console.WriteLine("Введиите описание");
+            var De = System.Console.ReadLine();
+
+            var context = new ProjectDataBaseContext();
+            var remont = context.Repairs.Where(x => x.RepairId == _enterChange).FirstOrDefault();
+
+            remont.InventoryId = II;
+            remont.DateStart = DS;
+            remont.Description= De;
+           
+            context.SaveChanges();
+        }
+        public static void changeOtvet()
+        {
+            System.Console.WriteLine("Введите имя ответственного");
+            var RN = System.Console.ReadLine();
+            System.Console.WriteLine("Введиите пароль");
+            var Pass = System.Console.ReadLine();
+
+            var context = new ProjectDataBaseContext();
+            var otvet = context.Responsibles.Where(x => x.ResponsibleId == _enterChange).FirstOrDefault();
+
+            otvet.ResponsibleName = RN;
+            otvet.Password = Pass;
+           
+            context.SaveChanges();
+        }
+        public static void changeProver()
+        {
+            System.Console.WriteLine("Введите название инвентаря");
+            var IN = System.Console.ReadLine();
+            System.Console.WriteLine("Введиите срок экспулуатации");
+            var DU = Convert.ToInt32(System.Console.ReadLine());
+            System.Console.WriteLine("Введиите дату ввода");
+            var DF = DateTime.Now;
+            System.Console.WriteLine("Введиите причину");
+            var R = System.Console.ReadLine();
+
+            var context = new ProjectDataBaseContext();
+            var document = context.Documents.Where(x => x.DocumentId == _enterChange).FirstOrDefault();
+
+            document.InventoryName = IN;
+            document.DurationOfUse = DU;
+            document.DateUsedFrom = DateTime.Now;
+            document.Reason = R;
+
+            context.SaveChanges();
+        }
         public static void deleteDocument() {
             var context = new ProjectDataBaseContext();
             var toDelete = context.Documents.First(x => x.DocumentId == _enterDelete);
@@ -436,12 +556,13 @@ namespace Project.Console
                     }
                 }
                 else if (_enterMenu == 4)
-                {
-
-                    //Изменить данные в таблице
+                {   //Изменить данные в таблице
                     switch (_x)
                     {
                         case 1:
+                            System.Console.WriteLine("Введите id аудитории для изменения");
+                            _enterChange = Convert.ToInt32(System.Console.ReadLine());
+                            changeAuditory();
                             break;
                         case 2:
                             System.Console.WriteLine("Введите id документа для изменения");
@@ -449,22 +570,34 @@ namespace Project.Console
                             changeDocument();
                             break;
                         case 3:
-
+                            System.Console.WriteLine("Введите id инвентаря для изменения");
+                            _enterChange = Convert.ToInt32(System.Console.ReadLine());
+                            changeInventory();
                             break;
                         case 4:
-
+                            System.Console.WriteLine("Введите id ремонта для изменения");
+                            _enterChange = Convert.ToInt32(System.Console.ReadLine());
+                            changeRemont();
                             break;
                         case 5:
-
+                            System.Console.WriteLine("Введите id ответственного для изменения");
+                            _enterChange = Convert.ToInt32(System.Console.ReadLine());
+                            changeOtvet();
                             break;
                         case 6:
-
+                            System.Console.WriteLine("Введите id проверяющего для изменения");
+                            _enterChange = Convert.ToInt32(System.Console.ReadLine());
+                            changeProver();
                             break;
                         case 7:
-
+                            System.Console.WriteLine("Введите id инвентаризации для изменения");
+                            _enterChange = Convert.ToInt32(System.Console.ReadLine());
+                            changeInventarization();
                             break;
                         case 8:
-
+                            System.Console.WriteLine("Введите id списка для изменения");
+                            _enterChange = Convert.ToInt32(System.Console.ReadLine());
+                            changeList();
                             break;
                         default:
                             System.Console.WriteLine("Введено неверное значение");
@@ -495,32 +628,32 @@ namespace Project.Console
                         case 3:
                             System.Console.WriteLine("Введите id инвентаря для удаления");
                             _enterDelete = Convert.ToInt32(System.Console.ReadLine());
-                            deleteDocument();
+                            deleteInventory();
                             break;
                         case 4:
                             System.Console.WriteLine("Введите id ремонта для удаления");
                             _enterDelete = Convert.ToInt32(System.Console.ReadLine());
-                            deleteDocument();
+                            deleteRepair();
                             break;
                         case 5:
                             System.Console.WriteLine("Введите id ответственного для удаления");
                             _enterDelete = Convert.ToInt32(System.Console.ReadLine());
-                            deleteDocument();
+                            deleteResponsible();
                             break;
                         case 6:
                             System.Console.WriteLine("Введите id проверяющего для удаления");
                             _enterDelete = Convert.ToInt32(System.Console.ReadLine());
-                            deleteDocument();
+                            deleteVerifier();
                             break;
                         case 7:
                             System.Console.WriteLine("Введите id инвентаризации для удаления");
                             _enterDelete = Convert.ToInt32(System.Console.ReadLine());
-                            deleteDocument();
+                            deleteInventarization();
                             break;
                         case 8:
                             System.Console.WriteLine("Введите id списка для удаления");
                             _enterDelete = Convert.ToInt32(System.Console.ReadLine());
-                            deleteDocument();
+                            deleteList();
                             break;
                         default:
                             System.Console.WriteLine("Введено неверное значение");
