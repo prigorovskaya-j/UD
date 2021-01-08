@@ -14,5 +14,9 @@ namespace Project.DataAccess.Models
         public string Description { get; set; }
 
         public virtual Inventory Inventory { get; set; }
+        public override string ToString()
+        {
+            return $"Id: {RepairId},  Inventory id: {InventoryId}, Date: {DateStart}, Date end: {DateEnd}, Description: {Description}";
+        }
     }
 }

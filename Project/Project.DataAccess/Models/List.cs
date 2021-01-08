@@ -13,5 +13,9 @@ namespace Project.DataAccess.Models
 
         public virtual Auditory Auditorium { get; set; }
         public virtual Inventarization Inventarization { get; set; }
+        public override string ToString()
+        {
+            return $"Id: {ListId},  Auditorie id: {AuditoriumId}, Inventarization id: {InventarizationId}";
+        }
     }
 }

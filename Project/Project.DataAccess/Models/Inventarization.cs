@@ -18,5 +18,9 @@ namespace Project.DataAccess.Models
 
         public virtual Verifier Verifier { get; set; }
         public virtual ICollection<List> Lists { get; set; }
+        public override string ToString()
+        {
+            return $"Id: {InventarizationId},  Verifier: {VerifierId}, Date: {InventarizationDate}";
+        }
     }
 }

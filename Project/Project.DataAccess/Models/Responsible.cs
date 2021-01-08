@@ -17,5 +17,9 @@ namespace Project.DataAccess.Models
         public string Password { get; set; }
 
         public virtual ICollection<Auditory> Auditories { get; set; }
+        public override string ToString()
+        {
+            return $"Id: {ResponsibleId},  name: {ResponsibleName}, password: {Password}";
+        }
     }
 }

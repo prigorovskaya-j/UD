@@ -17,5 +17,9 @@ namespace Project.DataAccess.Models
         public string Password { get; set; }
 
         public virtual ICollection<Inventarization> Inventarizations { get; set; }
+        public override string ToString()
+        {
+            return $"Id: {VerifierId},  Name: {VefifierName}, password: {Password}";
+        }
     }
 }

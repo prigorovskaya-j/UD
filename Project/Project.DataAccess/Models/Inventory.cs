@@ -21,5 +21,9 @@ namespace Project.DataAccess.Models
         public virtual Auditory Auditorium { get; set; }
         public virtual Document Document { get; set; }
         public virtual ICollection<Repair> Repairs { get; set; }
+        public override string ToString()
+        {
+            return $"Id: {InventoryId},  Auditorie id: {AuditoriumId}, Document id: {DocumentId}, Current state: {CurrentState}, Availability: {Availability}";
+        }
     }
 }
