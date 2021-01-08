@@ -20,5 +20,9 @@ namespace Project.DataAccess.Models
         public string Reason { get; set; }
 
         public virtual ICollection<Inventory> Inventories { get; set; }
+        public override string ToString()
+        {
+            return $"Id: {DocumentId}, Name: {InventoryName}, Used From: {DateUsedFrom}, Reason: {Reason}";
+        }
     }
 }
